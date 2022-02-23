@@ -1,0 +1,30 @@
+import matplotlib.pyplot as plt
+import math
+import random
+import numpy as np
+
+np.random.seed(0)
+
+X = []
+Y = []
+res = []
+
+theta = 0
+while(theta <= 720):
+    r = theta
+    for i in range(random.randint(1,3)):
+        X.append((r*math.cos(2*math.pi*theta/360))/10)
+        Y.append((-r*math.sin(2*math.pi*theta/360))/10)
+        res.append(1)
+ 
+    for i in range(random.randint(1,3)):
+        X.append((-r*math.cos(2*math.pi*theta/360))/10)
+        Y.append((r*math.sin(2*math.pi*theta/360))/10)
+        res.append(0)
+    theta+=random.randint(1,10)
+        
+for i in range(len(res)):
+    if res[i] == 1:
+        plt.plot(X[i], Y[i], "ro")
+    else:
+        plt.plot(X[i], Y[i], "bo")
